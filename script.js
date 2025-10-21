@@ -69,7 +69,9 @@ function checkCard(id) {
                 pickedCardIndex = null;
 
                 if (unflippedCards === cardCount) {
-                    winGame();
+                    setTimeout(() => {
+                        winGame();
+                    }, 800);
                 }
 
             } else {
