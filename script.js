@@ -28,6 +28,15 @@ function buildCard() {
     card.appendChild(back);
     console.log("Card Made!");
 
+    card.addEventListener('click', function() {
+       console.log("Card Clicked!");
+       if (!card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+       } else {
+        card.classList.remove('flipped');
+       }
+    });
+
     return cardWrapper;
 }
 
@@ -35,5 +44,4 @@ function buildCard() {
 const gameArea = document.getElementById('game-area');
 for (let i=0; i < 8; i++) {
     gameArea.appendChild(buildCard());
-
 }
