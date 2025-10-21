@@ -68,6 +68,10 @@ function checkCard(id) {
                 pickedCardObjectsArray.unshift(cardObjectsArray[pickedCardIndex]);
                 pickedCardIndex = null;
 
+                if (unflippedCards === cardCount) {
+                    winGame();
+                }
+
             } else {
                 // New card is not the same color as old card
                 setTimeout(() => {
@@ -79,6 +83,11 @@ function checkCard(id) {
         }
     }
 }
+
+function winGame() {
+    alert("You Won!");
+}
+
 
 
 // Our options
