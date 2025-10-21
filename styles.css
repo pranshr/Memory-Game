@@ -17,6 +17,7 @@ body {
     width: 120px;
     height: 180px;
     perspective: 1000px;
+    
 }
 
 .card {
@@ -25,6 +26,11 @@ body {
     position: relative;
     transition: transform 1s;
     transform-style: preserve-3d;
+    
+}
+
+.card:hover {
+    cursor: pointer;
 }
 
 .card.flipped {
@@ -32,6 +38,8 @@ body {
 }
 
 .front, .back {
+    border-radius: 6px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 1);
     position: absolute;
     top: 0;
     right: 0;
@@ -43,6 +51,11 @@ body {
 .front {
     background-color: aliceblue;
     z-index: 1;
+}
+
+.front:hover {
+    transition: transform 0.1s;
+    transform: rotate(2deg) scale(1.02);
 }
 
 .back {
