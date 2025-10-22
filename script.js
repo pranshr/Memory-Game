@@ -196,10 +196,10 @@ function loadLeaderboard() {
 
 
 // Our options
-const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
+const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', /*'darkolivegreen', 'khaki', 'red', 'black'*/];
 const cardCount = colorOptions.length * 2;
 const incrementTime = 3;
-const countdownTime = 100;
+const countdownTime = 20;
 
 const leaderboardKey = 'leaderboardData';
 
