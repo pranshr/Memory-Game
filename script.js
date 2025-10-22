@@ -82,14 +82,19 @@ function stopGame() {
     console.log("Stop");
 }
 
+function startGame() {
+    console.log('Start');
+}
+
 
 
 // Our options
-const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki'];
+const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
 const cardCount = colorOptions.length * 2;
 
 const resetButton = document.getElementById('reset');
 const stopButton = document.getElementById('stop');
+const startButton = document.getElementById('start');
 
 // Doubling the array to get the actual color list for the cards
 let finalColorsArray = colorOptions.concat(colorOptions);
@@ -116,3 +121,4 @@ for (let i=0; i < cardCount; i++) {
 
 resetButton.onclick = resetGame;
 stopButton.onclick = stopGame;
+startButton.onclick = startGame;
