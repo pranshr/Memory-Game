@@ -1,17 +1,3 @@
-// Testing card flipping and unflipping
-/*
-const card = document.getElementById('card');
-
-card.addEventListener('click', function() {
-    console.log("Card Clicked!");
-    if (!card.classList.contains('flipped')) {
-        card.classList.add('flipped');
-    } else {
-        card.classList.remove('flipped');
-    }
-});
-*/
-
 function buildCard(cardColor, id) {
     const cardWrapper = document.createElement('div');
     const card = document.createElement('div');
@@ -35,9 +21,7 @@ function buildCard(cardColor, id) {
     card.addEventListener('click', function() {
        if (!card.classList.contains('flipped')) {
         card.classList.add('flipped');
-       } /*else {
-        card.classList.remove('flipped');
-       }*/
+       }
       checkCard(cardWrapper.id);
     });
     
@@ -90,11 +74,22 @@ function winGame() {
     alert("You Won!");
 }
 
+function resetGame() {
+    console.log("Reset!");
+}
+
+function stopGame() {
+    console.log("Stop");
+}
+
 
 
 // Our options
-const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue'];
+const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki'];
 const cardCount = colorOptions.length * 2;
+
+const resetButton = document.getElementById('reset');
+const stopButton = document.getElementById('stop');
 
 // Doubling the array to get the actual color list for the cards
 let finalColorsArray = colorOptions.concat(colorOptions);
@@ -118,3 +113,6 @@ for (let i=0; i < cardCount; i++) {
         cardColor: color
     };
 }
+
+resetButton.onclick = resetGame;
+stopButton.onclick = stopGame;

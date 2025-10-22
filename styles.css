@@ -1,10 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #2a2a2a;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.side-card {
+    margin: 10px;
+    border: white 1px solid;
+    color: white;
+    padding: 10px;
+}
+
+.game-menu {
+    margin: 0;
 }
 
 .game-area {
-    margin: 30px auto;
-    max-width: 500px;
+    margin: 10px auto;
+    max-width: 470px;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(4, 1fr);
@@ -14,8 +34,8 @@ body {
 }
 
 .card-wrapper {
-    width: 120px;
-    height: 180px;
+    width: 110px;
+    height: 150px;
     perspective: 1000px;
     
 }
@@ -62,3 +82,4 @@ body {
     background-color: coral;
     transform: rotateY(180deg);
 }
+
