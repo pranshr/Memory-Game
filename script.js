@@ -90,7 +90,8 @@ function checkCard(id) {
 
 function winGame() {
     alert("You Won!");
-
+    score = countdownTimer * 100;
+    console.log("score");
 }
 
 function resetGame() {
@@ -125,7 +126,8 @@ function startGame() {
 }
 
 function gameOver() {
-    
+    alert("You Lost!");
+    countdownTimer = countdownTime;
 }
 
 function startTimer() {
@@ -166,15 +168,15 @@ function extendTime() {
 const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
 const cardCount = colorOptions.length * 2;
 const incrementTime = 3;
-const countdownTime = 10;
-const maxScore = 1000;
+const countdownTime = 20;
 
 const gameArea = document.getElementById('game-area');
-
 const resetButton = document.getElementById('reset');
 const stopButton = document.getElementById('stop');
 const startButton = document.getElementById('start');
 const incrementTimeElement = document.getElementById('extend');
+const leftPanel = document.getElementById('left-card');
+const gameBlocker = document.getElementById('game-blocker');
 
 let finalColorsArray = colorOptions.concat(colorOptions);
 let cardObjectsArray = [];
@@ -193,3 +195,12 @@ resetButton.onclick = resetGame;
 stopButton.onclick = stopGame;
 startButton.onclick = startGame;
 incrementTimeElement.style.display = 'none';
+
+gameBlocker.style.width = gameArea.offsetWidth + 'px';
+gameBlocker.style.left = leftPanel.offsetWidth + 'px'; 
+
+if (interval) {
+    gameBlocker.style.display = 'none';
+} else {
+    gameBlocker.style.display = 'block'
+}
