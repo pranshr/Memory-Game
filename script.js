@@ -29,6 +29,23 @@ function buildCard(cardColor, id) {
     return cardWrapper;
 }
 
+function randomiseCards() {
+
+    for (let i=0; i < cardCount; i++) {
+        // Pick a random Color
+        const index = Math.floor(Math.random() * finalColorsArray.length);
+        const color = finalColorsArray.splice(index, 1)[0];
+
+        const tempCard = buildCard(color, i)
+        gameArea.appendChild(tempCard);
+        cardObjectsArray[i] = {
+            cardIndex: i,
+            cardObject: tempCard.children[0],
+            cardColor: color
+        };
+    }
+}
+
 function checkCard(id) {
     if (pickedCardObjectsArray.includes(cardObjectsArray[id])) {
         return;
@@ -51,6 +68,7 @@ function checkCard(id) {
                 pickedCardObjectsArray.unshift(cardObjectsArray[id]);
                 pickedCardObjectsArray.unshift(cardObjectsArray[pickedCardIndex]);
                 pickedCardIndex = null;
+                extendTime();
 
                 if (unflippedCards === cardCount) {
                     setTimeout(() => {
@@ -72,40 +90,55 @@ function checkCard(id) {
 
 function winGame() {
     alert("You Won!");
+
 }
 
 function resetGame() {
-    clearInterval(interval);
-    interval = null;
-    countdownTimer = countdownTime;
-    updateDisplay();
-    startTimer();
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+        countdownTimer = countdownTime;
+        updateDisplay();
+        gameArea.replaceChildren();
+        randomiseCards();
+        startGame();
+    }
 }
 
 function stopGame() {
-    clearInterval(interval);
-    interval = null;
-    countdownTimer = countdownTime;
-    updateDisplay()
+    if (interval) {
+        clearInterval(interval);
+        interval = null;
+        countdownTimer = countdownTime;
+        updateDisplay();
+        gameArea.replaceChildren();
+        randomiseCards();
+    }
 }
 
 function startGame() {
-    console.log('Start');
-    const timerElement = document.getElementById('timer');
-    timerElement.innerText = countdownTimer;
-    startTimer(timerElement);
+    if (!interval) {
+        const timerElement = document.getElementById('timer');
+        timerElement.innerText = countdownTimer;
+        startTimer(timerElement);
+    }
+}
+
+function gameOver() {
+    
 }
 
 function startTimer() {
     if (interval) return; // Already running
-      interval = setInterval(() => {
-
-        if (countdownTimer < 0) {
-            console.log("times up");
+    interval = setInterval(() => {
+        if (countdownTimer > 0) {
+            countdownTimer--;
+            updateDisplay();
+        } else {
+            gameOver();
+            clearInterval(interval);
+            interval = null;
         }
-
-        countdownTimer--;
-        updateDisplay();
       }, 1000);
 }
 
@@ -114,22 +147,35 @@ function updateDisplay() {
     timerElement.innerText = countdownTimer;
 }
 
+function extendTime() {
+    countdownTimer += incrementTime;
+    incrementTimeElement.innerText = '+' + incrementTime;
+    incrementTimeElement.style.display = 'block';
+    setInterval(() => {
+        incrementTimeElement.style.display = 'none';
+    }, 1500);
+
+    
+    updateDisplay();
+}
+
 
 
 
 // Our options
 const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
 const cardCount = colorOptions.length * 2;
-const incrementTime = 5;
+const incrementTime = 3;
 const countdownTime = 10;
 const maxScore = 1000;
+
+const gameArea = document.getElementById('game-area');
 
 const resetButton = document.getElementById('reset');
 const stopButton = document.getElementById('stop');
 const startButton = document.getElementById('start');
 const incrementTimeElement = document.getElementById('extend');
 
-// Doubling the array to get the actual color list for the cards
 let finalColorsArray = colorOptions.concat(colorOptions);
 let cardObjectsArray = [];
 let pickedCardObjectsArray = [];
@@ -138,24 +184,12 @@ let unflippedCards = 0;
 
 let countdownTimer = countdownTime;
 let interval = null;
+let score = 0;
 
 
-// Adding more cards to the board
-const gameArea = document.getElementById('game-area');
-for (let i=0; i < cardCount; i++) {
-    // Pick a random Color
-    const index = Math.floor(Math.random() * finalColorsArray.length);
-    const color = finalColorsArray.splice(index, 1)[0];
-
-    const tempCard = buildCard(color, i)
-    gameArea.appendChild(tempCard);
-    cardObjectsArray[i] = {
-        cardIndex: i,
-        cardObject: tempCard.children[0],
-        cardColor: color
-    };
-}
+randomiseCards();
 
 resetButton.onclick = resetGame;
 stopButton.onclick = stopGame;
 startButton.onclick = startGame;
+incrementTimeElement.style.display = 'none';
