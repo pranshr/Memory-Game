@@ -5,26 +5,51 @@
 }
 
 body {
-    background-color: #2a2a2a;
+    background-color: #131212;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    
+    opacity: 1;
+    background: radial-gradient(circle, transparent 20%, #131212 20%, #131212 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #131212 20%, #131212 80%, transparent 80%, transparent) 20px 20px, linear-gradient(#b7b7bc 1.6px, transparent 1.6px) 0 -0.8px, linear-gradient(90deg, #b7b7bc 1.6px, #131212 1.6px) -0.8px 0;
+    background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+}
+
+button {
+    border-radius: 1px;
+    font-family: "VT323", sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    background: #131212;
+    padding: 5px 15px 5px 15px;
+    border: solid #ffffff 4px;
+}
+
+button:hover {
+    color: #131212;
+    background-color: #ffffff;
 }
 
 .side-card {
     margin: 10px;
-    border: white 1px solid;
+    border: white 8px solid;
     color: white;
     padding: 10px;
+    border-radius: 1px;
+    background-color: #131212;
 }
 
 .left-card {
-    display: flex;
-    flex-direction: column;
+    margin-right: 15px;
 }
 
-.intro-settings {
-    flex: 1;
+.leaderboard {
+    margin-left: 20px;
+}
+
+.game {
+    margin: auto;
 }
 
 .game-menu {
@@ -68,7 +93,7 @@ body {
 
 .front, .back {
     border-radius: 6px;
-    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.4);
     position: absolute;
     top: 0;
     right: 0;
@@ -80,6 +105,8 @@ body {
 .front {
     background-color: aliceblue;
     z-index: 1;
+    
+    background: linear-gradient(135deg, #5894c955 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #5894c9 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #5894c955 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #5894c9 25%, #F0F8FF 25%) 0px 0/ 20px 20px;
 }
 
 .front:hover {
@@ -102,5 +129,108 @@ body {
     z-index: 3;
     background-color: rgba(255, 255, 255, 0);
     cursor: not-allowed;
+}
+
+.introduction h1 {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 110px;
+    line-height: 75px;
+    margin: 5px 0 15px 0;
+}
+
+.introduction p {
+    margin: 5px 0 0 0;
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.introduction h3 {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.leaderboard {
+    text-align: center;
+}
+
+.leaderboard h2 {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-size: 80px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-major {
+    flex: 1;
+}
+
+.menu-buttons {
+    gap: 10px;
+}
+
+.timer-section {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    gap: 10px;
+}
+
+.timer-section h1 {
+    font-size: 150px;
+    line-height: 90px;
+}
+
+.timer-section h2 {
+    font-size: 50px;
+    line-height: 20px;
+}
+
+.timer-section h3 {
+    font-size: 75px;
+    color:olivedrab;
+}
+
+.leaderboardTable {
+    border: 1px solid #dededf;
+    
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 300;
+}
+
+.leaderboardTable th {
+    border: 1px solid white;
+    background-color: white;
+    color: #000000;
+    padding: 5px;
+}
+
+.leaderboardTable td {
+    border-bottom: 1px solid white;
+    background-color: #131212;
+    color: white;
+    padding: 5px;
 }
 
