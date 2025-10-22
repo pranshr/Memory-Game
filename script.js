@@ -114,10 +114,12 @@ function stopGame() {
         updateDisplay();
         gameArea.replaceChildren();
         randomiseCards();
+        gameBlocker.style.display = 'block';
     }
 }
 
 function startGame() {
+    gameBlocker.style.display = 'none';
     if (!interval) {
         const timerElement = document.getElementById('timer');
         timerElement.innerText = countdownTimer;
@@ -199,8 +201,4 @@ incrementTimeElement.style.display = 'none';
 gameBlocker.style.width = gameArea.offsetWidth + 'px';
 gameBlocker.style.left = leftPanel.offsetWidth + 'px'; 
 
-if (interval) {
-    gameBlocker.style.display = 'none';
-} else {
-    gameBlocker.style.display = 'block'
-}
+gameBlocker.style.display = 'block';
