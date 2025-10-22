@@ -89,9 +89,20 @@ function checkCard(id) {
 }
 
 function winGame() {
-    alert("You Won!");
     score = countdownTimer * 100;
     console.log("score");
+    clearInterval(interval);
+    interval = null;
+    gameBlocker.style.display = 'block';
+
+    const name = prompt("Enter your name:");
+    if (!name) return;
+
+    let data = JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+    data.push({ name, score });
+    localStorage.setItem(leaderboardKey, JSON.stringify(data));
+
+    loadLeaderboard();
 }
 
 function resetGame() {
@@ -163,14 +174,34 @@ function extendTime() {
     updateDisplay();
 }
 
+function loadLeaderboard() {
+    const tableBody = document.querySelector('#leaderboardTable tbody');
+    tableBody.innerHTML = '';
+
+    let data = JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+    data.sort((a, b) => b.score - a.score);
+
+    data.forEach((entry, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${entry.name}</td>
+        <td>${entry.score}</td>
+    `;
+    tableBody.appendChild(row);
+    });
+}
+
 
 
 
 // Our options
-const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
+const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue'/*, 'darkolivegreen', 'khaki', 'red', 'black'*/];
 const cardCount = colorOptions.length * 2;
 const incrementTime = 3;
-const countdownTime = 20;
+const countdownTime = 100;
+
+const leaderboardKey = 'leaderboardData';
 
 const gameArea = document.getElementById('game-area');
 const resetButton = document.getElementById('reset');
@@ -200,5 +231,6 @@ incrementTimeElement.style.display = 'none';
 
 gameBlocker.style.width = gameArea.offsetWidth + 'px';
 gameBlocker.style.left = leftPanel.offsetWidth + 'px'; 
-
 gameBlocker.style.display = 'block';
+
+loadLeaderboard();
