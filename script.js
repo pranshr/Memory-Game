@@ -75,26 +75,59 @@ function winGame() {
 }
 
 function resetGame() {
-    console.log("Reset!");
+    clearInterval(interval);
+    interval = null;
+    countdownTimer = countdownTime;
+    updateDisplay();
+    startTimer();
 }
 
 function stopGame() {
-    console.log("Stop");
+    clearInterval(interval);
+    interval = null;
+    countdownTimer = countdownTime;
+    updateDisplay()
 }
 
 function startGame() {
     console.log('Start');
+    const timerElement = document.getElementById('timer');
+    timerElement.innerText = countdownTimer;
+    startTimer(timerElement);
 }
+
+function startTimer() {
+    if (interval) return; // Already running
+      interval = setInterval(() => {
+
+        if (countdownTimer < 0) {
+            console.log("times up");
+        }
+
+        countdownTimer--;
+        updateDisplay();
+      }, 1000);
+}
+
+function updateDisplay() {
+    const timerElement = document.getElementById('timer');
+    timerElement.innerText = countdownTimer;
+}
+
 
 
 
 // Our options
 const colorOptions = ['coral', 'aqua', 'crimson', 'cadetblue', 'darkolivegreen', 'khaki', 'red', 'black'];
 const cardCount = colorOptions.length * 2;
+const incrementTime = 5;
+const countdownTime = 10;
+const maxScore = 1000;
 
 const resetButton = document.getElementById('reset');
 const stopButton = document.getElementById('stop');
 const startButton = document.getElementById('start');
+const incrementTimeElement = document.getElementById('extend');
 
 // Doubling the array to get the actual color list for the cards
 let finalColorsArray = colorOptions.concat(colorOptions);
@@ -102,6 +135,10 @@ let cardObjectsArray = [];
 let pickedCardObjectsArray = [];
 let pickedCardIndex = null;
 let unflippedCards = 0;
+
+let countdownTimer = countdownTime;
+let interval = null;
+
 
 // Adding more cards to the board
 const gameArea = document.getElementById('game-area');
