@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 body {
@@ -9,10 +9,10 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    
-    opacity: 1;
-    background: radial-gradient(circle, transparent 20%, #131212 20%, #131212 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #131212 20%, #131212 80%, transparent 80%, transparent) 20px 20px, linear-gradient(#b7b7bc 1.6px, transparent 1.6px) 0 -0.8px, linear-gradient(90deg, #b7b7bc 1.6px, #131212 1.6px) -0.8px 0;
-    background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+
+    background-image:  radial-gradient(#a1aab3 0.75px, transparent 0.75px), radial-gradient(#a1aab3 0.75px, #131212 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0,15px 15px;
 }
 
 button {
@@ -45,7 +45,7 @@ button:hover {
 }
 
 .leaderboard {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .game {
@@ -53,7 +53,7 @@ button:hover {
 }
 
 .game-menu {
-    margin-top: 0;   
+    margin-top: 0;
 }
 
 .game-area {
@@ -121,13 +121,12 @@ button:hover {
 
 .game-blocker {
     position: absolute;
-    top: 0;
-    left: 0;
+    
     max-width: 470px;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: 3;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0, 0.3);
     cursor: not-allowed;
 }
 
@@ -141,9 +140,9 @@ button:hover {
 
 .introduction p {
     margin: 5px 0 0 0;
-    font-family: "Lexend Deca", sans-serif;
+    font-family: "Bitcount Grid Single", sans-serif;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .introduction h3 {
@@ -203,7 +202,7 @@ button:hover {
 }
 
 .timer-section h3 {
-    font-size: 75px;
+    font-size: 70px;
     color:olivedrab;
 }
 
@@ -216,8 +215,9 @@ button:hover {
     border-spacing: 1px;
     text-align: left;
 
-    font-family: "Lexend Deca", sans-serif;
+    font-family: "Bitcount Grid Single", sans-serif;
     font-weight: 300;
+    font-family: 16px;
 }
 
 .leaderboardTable th {
@@ -232,4 +232,18 @@ button:hover {
     background-color: #131212;
     color: white;
     padding: 5px;
+}
+
+.table-rank {
+    width: 16%;
+    text-align: center;
+}
+
+.table-player {
+    width: 68%;
+}
+
+.table-score {
+    width: 16%;
+    text-align: center;
 }

@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
 
     </head>
     <body>
@@ -50,6 +51,7 @@
             </div>
         </div>
         <div class="game">
+            <div class="game-blocker" id="game-blocker"></div>
             <div class="game-area" id="game-area"></div>
         </div>
         <div class="leaderboard side-card">
@@ -57,9 +59,9 @@
             <table class="leaderboardTable" id="leaderboardTable">
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Player</th>
-                        <th>Score</th>
+                        <th class="table-rank">Rank</th>
+                        <th class="table-player">Player</th>
+                        <th class="table-score">Score</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,8 +69,8 @@
                 </tbody>
             </table>
         </div>
-
-        <div class="game-blocker" id="game-blocker"></div>
+        
+        
 
         
         <script src="script.js"></script>

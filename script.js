@@ -31,6 +31,8 @@ function buildCard(cardColor, id) {
 
 function randomiseCards() {
 
+    let finalColorsArray = colorOptions.concat(colorOptions);
+    
     for (let i=0; i < cardCount; i++) {
         // Pick a random Color
         const index = Math.floor(Math.random() * finalColorsArray.length);
@@ -154,7 +156,7 @@ function startTimer() {
             clearInterval(interval);
             interval = null;
         }
-      }, 1000);
+      }, 1500);
 }
 
 function updateDisplay() {
@@ -211,7 +213,6 @@ const incrementTimeElement = document.getElementById('extend');
 const leftPanel = document.getElementById('left-card');
 const gameBlocker = document.getElementById('game-blocker');
 
-let finalColorsArray = colorOptions.concat(colorOptions);
 let cardObjectsArray = [];
 let pickedCardObjectsArray = [];
 let pickedCardIndex = null;
@@ -229,8 +230,11 @@ stopButton.onclick = stopGame;
 startButton.onclick = startGame;
 incrementTimeElement.style.display = 'none';
 
-gameBlocker.style.width = gameArea.offsetWidth + 'px';
-gameBlocker.style.left = leftPanel.offsetWidth + 'px'; 
+console.log(gameArea.getBoundingClientRect());
+console.log(leftPanel.getBoundingClientRect());
+
+//gameBlocker.style.width = gameArea.getBoundingClientRect().width + 'px';
+//gameBlocker.style.left = gameArea.getBoundingClientRect().left + 'px'; 
 gameBlocker.style.display = 'block';
 
 loadLeaderboard();
