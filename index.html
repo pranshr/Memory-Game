@@ -70,6 +70,33 @@
             </table>
         </div>
         
+        <div id="main-modal" class="modal">
+            <div class="info-modal modal-content side-card introduction" id="info-modal">
+                <!-- <p id="modalMessage">This is your message to the user.</p> -->
+                <h1>Rules: </h1>
+                    <p>1. The timer will start to count down when you press start.</p>
+                    <p>2. Each correct match will give you more time.</p>
+                    <p>3. Your score is decided by the amount of time left.</p>
+                <br>
+                <button id="okBtn">OK</button>
+            </div>
+            <div class="win-modal modal-content side-card introduction" id="win-modal">
+                <h1>You Won!</h1>
+                <form id="win-form">
+                    <p id="modalMessage">Please enter your name below:</p>
+                    <br>
+                    <input type="text" id="name-input" placeholder="Your name" required />
+                    <button id="okBtn">OK</button>
+                </form>
+            </div>
+            <div class="lose-modal modal-content side-card introduction" id="lose-modal">
+                <!-- <p id="modalMessage">This is your message to the user.</p> -->
+                <h1>You Lost!</h1>
+                <p>Better luck next time!</p>
+                <br>
+                <button id="okBtn">OK</button>
+            </div>
+        </div>
         
 
         

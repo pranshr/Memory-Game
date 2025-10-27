@@ -97,14 +97,12 @@ function winGame() {
     interval = null;
     gameBlocker.style.display = 'block';
 
-    const name = prompt("Enter your name:");
-    if (!name) return;
-
-    let data = JSON.parse(localStorage.getItem(leaderboardKey)) || [];
-    data.push({ name, score });
-    localStorage.setItem(leaderboardKey, JSON.stringify(data));
-
-    loadLeaderboard();
+    // const name = prompt("Enter your name:");
+    // if (!name) return;
+    mainModal.style.display = 'flex';
+    infoModal.style.display = 'none';
+    winModal.style.display = 'block';
+    
 }
 
 function resetGame() {
@@ -141,7 +139,9 @@ function startGame() {
 }
 
 function gameOver() {
-    alert("You Lost!");
+    mainModal.style.display = 'flex';
+    infoModal.style.display = 'none';
+    loseModal.style.display = 'block';
     countdownTimer = countdownTime;
 }
 
@@ -194,6 +194,10 @@ function loadLeaderboard() {
     });
 }
 
+function closeModal() {
+    mainModal.style.display = "none";
+}
+
 
 
 
@@ -212,6 +216,13 @@ const startButton = document.getElementById('start');
 const incrementTimeElement = document.getElementById('extend');
 const leftPanel = document.getElementById('left-card');
 const gameBlocker = document.getElementById('game-blocker');
+const mainModal = document.getElementById("main-modal");
+const okModal = document.querySelectorAll("#okBtn");
+const infoModal = document.querySelector('#info-modal');
+const winModal = document.querySelector('#win-modal');
+const loseModal = document.querySelector('#lose-modal');
+const nameInput = document.getElementById('name-input');
+const form = document.getElementById('win-form');
 
 let cardObjectsArray = [];
 let pickedCardObjectsArray = [];
@@ -221,6 +232,7 @@ let unflippedCards = 0;
 let countdownTimer = countdownTime;
 let interval = null;
 let score = 0;
+let playerName;
 
 
 randomiseCards();
@@ -236,5 +248,34 @@ console.log(leftPanel.getBoundingClientRect());
 //gameBlocker.style.width = gameArea.getBoundingClientRect().width + 'px';
 //gameBlocker.style.left = gameArea.getBoundingClientRect().left + 'px'; 
 gameBlocker.style.display = 'block';
+
+mainModal.style.display = "flex";
+loseModal.style.display = "none";
+winModal.style.display = "none";
+
+for (var i=0; i < okModal.length; i++) {
+    if (i === 1) {
+        continue;
+    }
+    okModal[i].onclick = closeModal;
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameInput.value.trim();
+    if (name === '') {
+      alert('Please enter your name before continuing.');
+      return;
+    }
+
+    let data = JSON.parse(localStorage.getItem(leaderboardKey)) || [];
+    data.push({ name, score });
+    localStorage.setItem(leaderboardKey, JSON.stringify(data));
+
+    loadLeaderboard();
+
+    // Name entered, allow modal to "close"
+    mainModal.style.display = 'none';
+});
 
 loadLeaderboard();
