@@ -4,11 +4,19 @@
     box-sizing: border-box;    
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: #131212;
-    height: 100vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 93fr 100fr 93fr;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    column-gap: 10px;
+    overflow: hidden;
 
     background-image:  radial-gradient(#a1aab3 0.75px, transparent 0.75px), radial-gradient(#a1aab3 0.75px, #131212 0.75px);
     background-size: 30px 30px;
@@ -32,7 +40,6 @@ button:hover {
 }
 
 .side-card {
-    margin: 10px;
     border: white 8px solid;
     color: white;
     padding: 10px;
@@ -40,16 +47,18 @@ button:hover {
     background-color: #131212;
 }
 
-.left-card {
-    margin-right: 15px;
+
+.left-card, .game, .leaderboard {
+    height: 100%;
 }
 
-.leaderboard {
-    margin-left: 25px;
+.left-card {
+    row-gap: 8px;
 }
 
 .game {
-    margin: auto;
+    position: relative;
+    padding: 10px 0;
 }
 
 .game-menu {
@@ -57,19 +66,19 @@ button:hover {
 }
 
 .game-area {
-    margin: 10px auto;
-    max-width: 470px;
+    margin: auto;    
+    height: 100%;
+    width: 100%;
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
 }
 
 .card-wrapper {
-    width: 110px;
-    height: 150px;
+    /*width: 110px;
+    height: 150px;*/
     perspective: 1000px;
     
 }
@@ -154,6 +163,7 @@ button:hover {
 
 .leaderboard {
     text-align: center;
+    min-width: 0;
 }
 
 .leaderboard h2 {
@@ -214,10 +224,17 @@ button:hover {
     border-collapse: collapse;
     border-spacing: 1px;
     text-align: left;
+    word-wrap: break-word;
 
     font-family: "Bitcount Grid Single", sans-serif;
     font-weight: 300;
     font-family: 16px;
+}
+
+.leaderboardTable th, .leaderboardTable td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
 .leaderboardTable th {

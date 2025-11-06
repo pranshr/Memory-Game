@@ -4,6 +4,13 @@ function buildCard(cardColor, id) {
     const front = document.createElement('div');
     const back = document.createElement('div');
 
+    //const gameAreaDimensions = gameArea.getBoundingClientRect();
+    //const cardWidth = Math.floor((gameAreaDimensions.width - 3*gameArea.style.gap) / 4);
+    //const cardHeight = Math.floor(cardWidth * 15/11);
+
+    //cardWrapper.style.width = cardWidth + 'px';
+    //cardWrapper.style.height = cardHeight + 'px';
+
     // Adding Classes
     cardWrapper.classList.add('card-wrapper');
     card.classList.add('card');
